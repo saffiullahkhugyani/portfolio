@@ -107,11 +107,31 @@ export function HiveBackground({ hexSize = 34, holdMs = 1000 }: Props) {
         const dy = cell.cy - my;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < brush) {
-          const intensity = 1 - dist / brush; // 1 = center, 0 = edge
+          const intensity = 1 - dist / brush;
           cell.peakAlpha = 0.35 + intensity * 0.65;
           cell.lastHit = now;
         }
       }
+    };
+
+    // Mobile: randomly light up individual cells since there is no cursor
+    let mobileTimer: ReturnType<typeof setTimeout> | null = null;
+    const isTouchOnly = !window.matchMedia(
+      "(hover: hover) and (pointer: fine)"
+    ).matches;
+
+    const scheduleRandomFlicker = () => {
+      const delay = 400 + Math.random() * 900;
+      mobileTimer = setTimeout(() => {
+        if (cells.length === 0) { scheduleRandomFlicker(); return; }
+        const count = 1 + Math.floor(Math.random() * 3); // 1–3 cells at a time
+        for (let i = 0; i < count; i++) {
+          const cell = cells[Math.floor(Math.random() * cells.length)];
+          cell.peakAlpha = 0.45 + Math.random() * 0.55;
+          cell.lastHit = performance.now();
+        }
+        scheduleRandomFlicker();
+      }, delay);
     };
 
     const draw = () => {
@@ -164,7 +184,11 @@ export function HiveBackground({ hexSize = 34, holdMs = 1000 }: Props) {
     setup();
     frameId = requestAnimationFrame(draw);
 
-    window.addEventListener("mousemove", handleMouseMove);
+    if (isTouchOnly) {
+      scheduleRandomFlicker();
+    } else {
+      window.addEventListener("mousemove", handleMouseMove);
+    }
     document.addEventListener("visibilitychange", handleVisibility);
     window.addEventListener("portfolio-theme-change", readColors);
 
@@ -173,6 +197,7 @@ export function HiveBackground({ hexSize = 34, holdMs = 1000 }: Props) {
 
     return () => {
       cancelAnimationFrame(frameId);
+      if (mobileTimer) clearTimeout(mobileTimer);
       window.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("visibilitychange", handleVisibility);
       window.removeEventListener("portfolio-theme-change", readColors);
