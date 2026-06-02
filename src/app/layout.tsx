@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
-import { HiveBackground } from "@/components/hive-background";
 import { Interactions } from "@/components/interactions";
 import "./globals.css";
 
@@ -74,7 +73,6 @@ export default function RootLayout({
         <Script id="theme-init" strategy="beforeInteractive">
           {THEME_INIT_SCRIPT}
         </Script>
-        <HiveBackground />
         <Interactions />
         <div style={{ position: "relative", zIndex: 1, minHeight: "100%" }}>
           {children}

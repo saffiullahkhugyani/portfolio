@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 
 export function Interactions() {
-  // Scroll reveal — adds .is-visible when element enters viewport
+  // Scroll reveal
   useEffect(() => {
     const io = new IntersectionObserver(
       (entries) => {
@@ -19,15 +19,12 @@ export function Interactions() {
     return () => io.disconnect();
   }, []);
 
-  // 3D tilt — tracks cursor per card and sets --rx/--ry/--mx/--my CSS vars
+  // 3D tilt — sets --rx/--ry/--mx/--my on .tilt-card elements
   useEffect(() => {
     if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
 
-    const TILT = 6;
-    const handlers = new Map<
-      Element,
-      { move: (e: MouseEvent) => void; leave: () => void }
-    >();
+    const TILT = 5;
+    const handlers = new Map<Element, { move: (e: MouseEvent) => void; leave: () => void }>();
 
     document.querySelectorAll<HTMLElement>(".tilt-card").forEach((el) => {
       const move = (e: MouseEvent) => {
@@ -36,8 +33,6 @@ export function Interactions() {
         const y = (e.clientY - r.top) / r.height;
         el.style.setProperty("--rx", `${((0.5 - y) * TILT * 2).toFixed(2)}deg`);
         el.style.setProperty("--ry", `${((x - 0.5) * TILT * 2).toFixed(2)}deg`);
-        el.style.setProperty("--mx", `${(x * 100).toFixed(1)}%`);
-        el.style.setProperty("--my", `${(y * 100).toFixed(1)}%`);
       };
       const leave = () => {
         el.style.setProperty("--rx", "0deg");
