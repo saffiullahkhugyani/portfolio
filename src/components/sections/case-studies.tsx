@@ -4,35 +4,68 @@ import { FaArrowRight, FaGithub } from "react-icons/fa";
 const projects = [
   {
     num: "01",
-    title: "Mindway — Mental Wellness App",
+    title: "Mind Lab — Flutter Mobile App",
     description:
-      "Led full-cycle delivery of a cross-platform mental health tracking app. Defined user stories, ran sprints, coordinated UAT, and shipped v1 in 10 weeks with zero critical bugs at launch.",
-    outcome: "Shipped v1 in 10 weeks · 0 critical bugs at launch",
-    stack: ["React Native", "Firebase", "REST APIs", "Agile"],
+      "Cross-platform Flutter mobile application built for the Mind Lab platform. Covers user authentication, subscription management, and certificate tracking — shipped as a full product suite alongside a Next.js subscription portal and certificate management system.",
+    outcome: "Full product suite · 119+ commits · Multi-platform",
+    stack: ["Flutter", "Dart", "Supabase", "Next.js", "TypeScript", "Tailwind CSS"],
     accent: "var(--accent)",
-    github: null as string | null,
+    github: "https://github.com/saffiullahkhugyani/mind_lab_app",
     live: null as string | null,
   },
   {
     num: "02",
-    title: "Fleet Command — Logistics Dashboard",
+    title: "Arduino Serial Monitor — Web App",
     description:
-      "Built a real-time vehicle-tracking web dashboard with live map updates, RBAC, and exportable reports. Reduced manual reporting time by ~60% — now used daily by 3 internal teams.",
-    outcome: "−60% manual reporting · 3 teams use it daily",
-    stack: ["Next.js", "TypeScript", "REST APIs", "Tailwind CSS"],
+      "Browser-based serial monitor for Arduino hardware built with Next.js and TypeScript. Replaces traditional desktop tools with a modern web interface — connects directly to serial ports via the Web Serial API and displays live data in real time.",
+    outcome: "Live deployed · Web Serial API · Real-time data",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Web Serial API"],
     accent: "var(--accent-2)",
-    github: null as string | null,
-    live: null as string | null,
+    github: "https://github.com/saffiullahkhugyani/arduino-serial-monitor",
+    live: "https://arduino-serial-monitor.vercel.app",
   },
   {
     num: "03",
-    title: "SmartFlow — IoT Automation System",
+    title: "ESP32 Cam Car — IoT + Flutter",
     description:
-      "Designed and shipped a full hardware-software integration: ESP32 sensors → FastAPI backend → Flutter mobile control app. Achieved sub-200ms latency on LAN for real-time remote control.",
-    outcome: "<200ms latency · Real-time device control",
-    stack: ["ESP32", "Arduino", "FastAPI", "Flutter"],
+      "RC car controlled over Bluetooth LE via a Flutter mobile app, with live video streaming from an onboard ESP32 camera module. Built end-to-end: ESP32 C++ firmware, BLE communication protocol, and the Flutter control interface.",
+    outcome: "Real-time BLE control · Live video stream · Field tested",
+    stack: ["ESP32", "C++", "Flutter", "Dart", "BLE", "Arduino"],
     accent: "var(--gold)",
-    github: null as string | null,
+    github: "https://github.com/saffiullahkhugyani/esp32cam-car-with-flutter",
+    live: null as string | null,
+  },
+  {
+    num: "04",
+    title: "Mind Lab Certificate Management",
+    description:
+      "Web platform for managing and issuing certificates within the Mind Lab ecosystem. Built with Next.js App Router, TypeScript, and shadcn/ui — featuring a clean component-based architecture and live deployment on Vercel.",
+    outcome: "47 commits · Live on Vercel · shadcn/ui components",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui"],
+    accent: "var(--accent)",
+    github: "https://github.com/saffiullahkhugyani/mind-lab-certificate-management-system",
+    live: "https://mind-lab-certificate-management-system.vercel.app",
+  },
+  {
+    num: "05",
+    title: "AQTrading — Japanese Used Cars Export Platform",
+    description:
+      "Full-stack monorepo for a Japanese used car export business. Ships three apps from one codebase: a client portal, an admin/CRO portal, and a backend API — all sharing a common UI library, database layer (Prisma), and TypeScript types via Turbo.",
+    outcome: "Monorepo · 3 apps · Client + Admin + API",
+    stack: ["TypeScript", "Turbo", "Prisma", "pnpm", "Next.js"],
+    accent: "var(--gold)",
+    github: "https://github.com/saffiullahkhugyani/aqtrading",
+    live: "https://aqtrading-web.vercel.app",
+  },
+  {
+    num: "06",
+    title: "React Native Expo Design Playground",
+    description:
+      "A production-ready design system starter for React Native — transforms design tokens into type-safe, reusable components. Features layout primitives, a live pattern playground with 10+ layouts, light/dark theming, i18n support, and RTL layout compatibility.",
+    outcome: "Expo 54 · React Native 0.81 · Type-safe theming",
+    stack: ["React Native", "Expo", "TypeScript", "Expo Router"],
+    accent: "var(--accent-2)",
+    github: "https://github.com/saffiullahkhugyani/react-native-expo-design-playground",
     live: null as string | null,
   },
 ];
@@ -42,8 +75,8 @@ export function CaseStudies() {
     <section id="case-studies" className="section anchor-section">
       <SectionHeader
         eyebrow="Selected Work"
-        heading="Proof over promises."
-        sub="Real projects, real outcomes. Not agency mockups."
+        heading="Real projects from my GitHub."
+        sub="Actual repositories I've built and shipped — not placeholders."
       />
       <div className="projects-grid">
         {projects.map((p, i) => (
