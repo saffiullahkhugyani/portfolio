@@ -8,8 +8,20 @@ export function Interactions() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            io.unobserve(entry.target);
+            const el = entry.target as HTMLElement;
+            el.classList.add("is-visible");
+            io.unobserve(el);
+            // The inline stagger delay (transitionDelay: i * 90ms) also delays
+            // the tilt-card transform transition — clear it once the reveal ends.
+            if (el.style.transitionDelay) {
+              el.addEventListener(
+                "transitionend",
+                () => {
+                  el.style.transitionDelay = "0s";
+                },
+                { once: true }
+              );
+            }
           }
         });
       },

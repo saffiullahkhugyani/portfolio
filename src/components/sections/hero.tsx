@@ -30,9 +30,9 @@ export function Hero() {
           </h1>
 
           <p className="hero-sub reveal">
-            Software engineer with 6+ years delivering React Native, Flutter,
-            and Next.js apps — plus hardware integrations with ESP32 and Arduino
-            that work in the field, not just in demos.
+            Software engineer with 6+ years shipping React Native, Flutter, and
+            Next.js products — 6 public repos, 3 live deployments, and ESP32
+            hardware integrations that work in the field, not just in demos.
           </p>
 
           <div className="hero-actions reveal">
@@ -86,8 +86,8 @@ export function Hero() {
               <p>&nbsp;&nbsp;<span className="cp">stack</span>: [<span className="cs">&quot;React Native&quot;</span>, <span className="cs">&quot;Flutter&quot;</span>,</p>
               <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="cs">&quot;Next.js&quot;</span>, <span className="cs">&quot;TypeScript&quot;</span>],</p>
               <p>&nbsp;&nbsp;<span className="cp">hardware</span>: [<span className="cs">&quot;ESP32&quot;</span>, <span className="cs">&quot;Arduino&quot;</span>],</p>
-              <p>&nbsp;&nbsp;<span className="cp">experience</span>: <span className="cn">6</span>, <span className="cc">// years</span></p>
-              <p>&nbsp;&nbsp;<span className="cp">products</span>: <span className="cn">12</span>, <span className="cc">// shipped</span></p>
+              <p>&nbsp;&nbsp;<span className="cp">experience</span>: <span className="cn">6</span>, <span className="cc">{"// years"}</span></p>
+              <p>&nbsp;&nbsp;<span className="cp">products</span>: <span className="cn">12</span>, <span className="cc">{"// shipped"}</span></p>
               <p>&nbsp;&nbsp;<span className="cp">openToWork</span>: <span className="ck">true</span>,</p>
               <p>{"}"}</p>
             </div>

@@ -1,72 +1,93 @@
+import Image from "next/image";
 import { SectionHeader } from "@/components/ui/section-header";
 import { FaArrowRight, FaGithub } from "react-icons/fa";
 
+// ponytail: image is a plain path under /public — drop a file in public/projects/
+// and set it here; null renders a branded placeholder until then.
 const projects = [
   {
     num: "01",
     title: "Mind Lab — Flutter Mobile App",
-    description:
-      "Cross-platform Flutter mobile application built for the Mind Lab platform. Covers user authentication, subscription management, and certificate tracking — shipped as a full product suite alongside a Next.js subscription portal and certificate management system.",
-    outcome: "Full product suite · 119+ commits · Multi-platform",
+    problem:
+      "The Mind Lab platform needed a single mobile experience for auth, subscriptions, and certificate tracking across iOS and Android.",
+    built:
+      "Cross-platform Flutter app on Supabase, shipped alongside a Next.js subscription portal and certificate system as one product suite.",
+    outcome: "Full product suite · Multi-platform · 119+ commits",
     stack: ["Flutter", "Dart", "Supabase", "Next.js", "TypeScript", "Tailwind CSS"],
     accent: "var(--accent)",
     github: "https://github.com/saffiullahkhugyani/mind_lab_app",
     live: null as string | null,
+    image: null as string | null,
   },
   {
     num: "02",
     title: "Arduino Serial Monitor — Web App",
-    description:
-      "Browser-based serial monitor for Arduino hardware built with Next.js and TypeScript. Replaces traditional desktop tools with a modern web interface — connects directly to serial ports via the Web Serial API and displays live data in real time.",
-    outcome: "Live deployed · Web Serial API · Real-time data",
+    problem:
+      "Reading Arduino serial output meant installing desktop tooling — a barrier for quick debugging and classroom use.",
+    built:
+      "A browser-based serial monitor in Next.js + TypeScript that connects straight to serial ports via the Web Serial API and streams live data.",
+    outcome: "Live deployed · Web Serial API · Zero-install debugging",
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Web Serial API"],
     accent: "var(--accent-2)",
     github: "https://github.com/saffiullahkhugyani/arduino-serial-monitor",
     live: "https://arduino-serial-monitor.vercel.app",
+    image: null as string | null,
   },
   {
     num: "03",
     title: "ESP32 Cam Car — IoT + Flutter",
-    description:
-      "RC car controlled over Bluetooth LE via a Flutter mobile app, with live video streaming from an onboard ESP32 camera module. Built end-to-end: ESP32 C++ firmware, BLE communication protocol, and the Flutter control interface.",
+    problem:
+      "Controlling hardware in real time with live video needs firmware, a comms protocol, and a mobile UI that all agree with each other.",
+    built:
+      "End-to-end: ESP32 C++ firmware, a BLE communication protocol, and a Flutter control app with live camera streaming from the car.",
     outcome: "Real-time BLE control · Live video stream · Field tested",
     stack: ["ESP32", "C++", "Flutter", "Dart", "BLE", "Arduino"],
     accent: "var(--gold)",
     github: "https://github.com/saffiullahkhugyani/esp32cam-car-with-flutter",
     live: null as string | null,
+    image: null as string | null,
   },
   {
     num: "04",
     title: "Mind Lab Certificate Management",
-    description:
-      "Web platform for managing and issuing certificates within the Mind Lab ecosystem. Built with Next.js App Router, TypeScript, and shadcn/ui — featuring a clean component-based architecture and live deployment on Vercel.",
-    outcome: "47 commits · Live on Vercel · shadcn/ui components",
+    problem:
+      "Issuing and tracking certificates manually didn't scale for the Mind Lab ecosystem.",
+    built:
+      "A web platform on Next.js App Router + TypeScript with shadcn/ui — clean component architecture, deployed live on Vercel.",
+    outcome: "Live on Vercel · shadcn/ui · 47 commits",
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui"],
     accent: "var(--accent)",
     github: "https://github.com/saffiullahkhugyani/mind-lab-certificate-management-system",
     live: "https://mind-lab-certificate-management-system.vercel.app",
+    image: null as string | null,
   },
   {
     num: "05",
     title: "AQTrading — Japanese Used Cars Export Platform",
-    description:
-      "Full-stack monorepo for a Japanese used car export business. Ships three apps from one codebase: a client portal, an admin/CRO portal, and a backend API — all sharing a common UI library, database layer (Prisma), and TypeScript types via Turbo.",
+    problem:
+      "A car export business needed a client portal, an admin/CRO portal, and an API — without maintaining three divergent codebases.",
+    built:
+      "A Turbo monorepo shipping all three apps from one codebase, sharing a UI library, Prisma data layer, and TypeScript types.",
     outcome: "Monorepo · 3 apps · Client + Admin + API",
     stack: ["TypeScript", "Turbo", "Prisma", "pnpm", "Next.js"],
     accent: "var(--gold)",
     github: "https://github.com/saffiullahkhugyani/aqtrading",
     live: "https://aqtrading-web.vercel.app",
+    image: null as string | null,
   },
   {
     num: "06",
     title: "React Native Expo Design Playground",
-    description:
-      "A production-ready design system starter for React Native — transforms design tokens into type-safe, reusable components. Features layout primitives, a live pattern playground with 10+ layouts, light/dark theming, i18n support, and RTL layout compatibility.",
+    problem:
+      "React Native teams keep rebuilding the same theming, layout, and i18n plumbing on every new app.",
+    built:
+      "A production-ready design system starter: type-safe tokens → components, layout primitives, a live pattern playground with 10+ layouts, light/dark theming, i18n and RTL support.",
     outcome: "Expo 54 · React Native 0.81 · Type-safe theming",
     stack: ["React Native", "Expo", "TypeScript", "Expo Router"],
     accent: "var(--accent-2)",
     github: "https://github.com/saffiullahkhugyani/react-native-expo-design-playground",
     live: null as string | null,
+    image: null as string | null,
   },
 ];
 
@@ -86,10 +107,30 @@ export function CaseStudies() {
             style={{ transitionDelay: `${i * 90}ms` }}
           >
             <div className="project-card-accent" style={{ background: p.accent }} />
+            <div className="project-media" style={{ "--media-accent": p.accent } as React.CSSProperties}>
+              {p.image ? (
+                <Image
+                  src={p.image}
+                  alt={`${p.title} screenshot`}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+              ) : (
+                <span className="project-media-num" aria-hidden="true">{p.num}</span>
+              )}
+            </div>
             <div className="project-card-inner">
-              <span className="project-num">{p.num}</span>
               <h3>{p.title}</h3>
-              <p className="project-desc">{p.description}</p>
+              <dl className="project-story">
+                <div>
+                  <dt>Problem</dt>
+                  <dd>{p.problem}</dd>
+                </div>
+                <div>
+                  <dt>What I built</dt>
+                  <dd>{p.built}</dd>
+                </div>
+              </dl>
               <p className="project-outcome">{p.outcome}</p>
               <div className="project-stack">
                 {p.stack.map((t) => (

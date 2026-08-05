@@ -46,8 +46,8 @@ export function ExpertiseTabs() {
   return (
     <section className="section expertise-section">
       <SectionHeader
-        eyebrow="Expertise"
-        heading="What I can build for your team."
+        eyebrow="How I Ship"
+        heading="The engineering behind each domain."
       />
       <div className="expertise-wrap">
         <div className="tab-list" role="tablist" aria-label="Expertise areas">

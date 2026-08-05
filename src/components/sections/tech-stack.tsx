@@ -3,7 +3,7 @@ import type { IconType } from "react-icons";
 import {
   SiAndroid, SiApple, SiArduino, SiDart, SiEspressif,
   SiFigma, SiFirebase, SiFlutter, SiGit, SiHtml5,
-  SiJavascript, SiJira, SiNextdotjs, SiNodedotjs, SiNpm,
+  SiJavascript, SiJira, SiN8N, SiNextdotjs, SiNodedotjs,
   SiPostman, SiReact, SiSass, SiTypescript,
 } from "react-icons/si";
 import { FaCode, FaMicrochip, FaNetworkWired } from "react-icons/fa";
@@ -55,7 +55,7 @@ const groups: {
       { name: "Node.js", icon: SiNodedotjs },
       { name: "Jira", icon: SiJira },
       { name: "Figma", icon: SiFigma },
-      { name: "n8n", icon: SiNpm },
+      { name: "n8n", icon: SiN8N },
       { name: "Postman", icon: SiPostman },
       { name: "Agile / Scrum", icon: FaCode },
     ],

@@ -4,7 +4,7 @@ const jobs = [
   {
     role: "Mobile Engineer",
     org: "Productbox",
-    period: "Oct 2022 — Present",
+    period: "Sep 2025 — Present",
     type: "Full-time",
     summary:
       "Owns roadmap-driven delivery: writing user stories, running sprints, and shipping production mobile apps with full UAT accountability.",
@@ -22,7 +22,7 @@ const jobs = [
   {
     role: "Android Developer",
     org: "Sybrid Pvt Ltd",
-    period: "Jun 2019 — Feb 2020",
+    period: "Dec 2020 — Jun 2022",
     type: "Full-time",
     summary:
       "Built Android features, integrated REST APIs, and stabilized a live consumer app used by thousands of daily users.",

@@ -1,8 +1,8 @@
 const stats = [
   { value: "6+", label: "Years Experience" },
   { value: "12+", label: "Products Shipped" },
-  { value: "3", label: "Core Domains" },
-  { value: "100%", label: "End-to-End Ownership" },
+  { value: "3", label: "Platforms: Mobile · Web · IoT" },
+  { value: "6", label: "Open-Source Repos Live" },
 ];
 
 export function StatsBar() {

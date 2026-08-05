@@ -697,20 +697,47 @@ body {
   flex: 1;
 }
 
-.project-num {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: var(--text-subtle);
-}
-
 .project-card h3 {
   font-size: 1.1rem;
   font-weight: 700;
   line-height: 1.3;
 }
 
-.project-desc {
+.project-media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background:
+    radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--media-accent) 18%, transparent), transparent 60%),
+    var(--surface-2);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.project-media img { object-fit: cover; }
+
+.project-media-num {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: color-mix(in srgb, var(--media-accent) 45%, transparent);
+  user-select: none;
+}
+
+.project-story {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.project-story dt {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  margin-bottom: 0.15rem;
+}
+
+.project-story dd {
   color: var(--text-muted);
   font-size: 0.88rem;
   line-height: 1.6;
@@ -1080,7 +1107,51 @@ body {
 }
 
 .testi-name { font-size: 0.88rem; font-weight: 700; }
+.testi-name a:hover { color: var(--accent); }
 .testi-context { font-size: 0.77rem; color: var(--text-subtle); margin-top: 0.1rem; }
+
+/* GitHub proof strip (shown until real testimonials land) */
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+.proof-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 1.2rem;
+  background: var(--surface);
+  padding: 1.4rem 1.5rem;
+  transition: border-color 160ms ease;
+}
+.proof-card:hover { border-color: var(--border-hover); }
+
+.proof-icon {
+  font-size: 1.6rem;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.proof-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.proof-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 0.2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.proof-value svg { font-size: 0.65rem; color: var(--text-subtle); }
 
 /* ═══════════════════════════════════════════════════
    PROCESS
@@ -1270,6 +1341,62 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
+/* Contact form */
+.contact-form {
+  display: grid;
+  gap: 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 1.2rem;
+  background: var(--surface);
+  padding: 1.5rem;
+}
+
+.cf-field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.cf-field span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.cf-field input,
+.cf-field textarea {
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 0.7rem;
+  padding: 0.65rem 0.85rem;
+  transition: border-color 160ms ease;
+  resize: vertical;
+}
+
+.cf-field input:focus-visible,
+.cf-field textarea:focus-visible {
+  outline: none;
+  border-color: var(--border-hover);
+}
+
+.cf-field input::placeholder,
+.cf-field textarea::placeholder { color: var(--text-subtle); }
+
+.cf-submit { justify-content: center; }
+.cf-submit:disabled { opacity: 0.6; cursor: default; }
+
+.cf-status {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent-2);
+  min-height: 1.2em;
+  margin-top: -0.3rem;
+}
+
 .contact-method-value {
   font-size: 0.88rem;
   font-weight: 500;
@@ -1321,6 +1448,56 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════ */
+.site-footer {
+  max-width: 1180px;
+  margin: 4rem auto 0;
+  padding: 2rem 0 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.35rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.footer-links a:hover { color: var(--accent); }
+
+.footer-social {
+  display: flex;
+  gap: 0.9rem;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+.footer-social a:hover { color: var(--accent); }
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: var(--text-subtle);
+  margin-top: 1.5rem;
+}
+
+/* ═══════════════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
@@ -1328,6 +1505,7 @@ body {
   .projects-grid,
   .caps-grid,
   .testi-grid { grid-template-columns: repeat(2, 1fr); }
+  .proof-grid { grid-template-columns: 1fr; }
   .hero-inner { grid-template-columns: 1fr; }
   .hero-card-wrap { max-width: 480px; }
   .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }

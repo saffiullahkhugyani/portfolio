@@ -1,4 +1,5 @@
 import { FaEnvelope, FaFileDownload, FaGithub, FaLinkedin, FaPhone, FaWhatsapp } from "react-icons/fa";
+import { ContactForm } from "./contact-form";
 
 const PROFILE_LINKS = {
   github: "https://github.com/saffiullahkhugyani",
@@ -64,8 +65,9 @@ export function Contact() {
           </div>
         </div>
 
-        {/* Right: contact cards */}
+        {/* Right: form + contact cards */}
         <div className="contact-methods">
+          <ContactForm />
           {contactMethods.map((m) => (
             <a
               key={m.label}
